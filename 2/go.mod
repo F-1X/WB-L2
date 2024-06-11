@@ -1,3 +1,3 @@
-module github.com/F-1X/WB-L2/2
+module raspakouka
 
 go 1.22.4

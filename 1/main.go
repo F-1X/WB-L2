@@ -11,7 +11,10 @@ package main
 // 2. Программа должна корректно обрабатывать ошибки
 // библиотеки: выводить их в STDERR и возвращать ненулевой
 // код выхода в OS
+import (
+	ntp2 "github.com/F-1X/WB-L2/1/ntp"
+)
 
 func main() {
-	
+	ntp2.GetCurrentTime()
 }

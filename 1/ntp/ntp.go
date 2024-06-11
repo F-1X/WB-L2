@@ -2,7 +2,7 @@ package ntp
 
 import (
 	"fmt"
-	"log"
+	"os"
 
 	ntp "github.com/beevik/ntp"
 )
@@ -10,7 +10,7 @@ import (
 func GetCurrentTime() {
 	time, err := ntp.Time("0.beevik-ntp.pool.ntp.org")
 	if err != nil {
-		log.Fatal(err)
+		fmt.Fprintln(os.Stderr, err)
 
 	}
 	fmt.Println(time)
