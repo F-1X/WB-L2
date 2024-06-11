@@ -1,5 +1,12 @@
 package main
 
+import (
+	"fmt"
+	"os"
+
+	"github.com/beevik/ntp"
+)
+
 // Базовая задача
 // Создать программу печатающую точное время с использованием
 // NTP -библиотеки. Инициализировать как go module. Использовать
@@ -11,10 +18,21 @@ package main
 // 2. Программа должна корректно обрабатывать ошибки
 // библиотеки: выводить их в STDERR и возвращать ненулевой
 // код выхода в OS
-import (
-	ntp2 "github.com/F-1X/WB-L2/1/ntp"
-)
+
+// Решение - модуль ntp
 
 func main() {
-	ntp2.GetCurrentTime()
+	GetCurrentTime()
+}
+
+func GetCurrentTime() {
+	time, err := ntp.Time("0bee1vik-ntp.pool.nt1p.org")
+	if err != nil {
+		_, err := fmt.Fprintln(os.Stderr, err)
+		if err != nil {
+			panic(err)
+		}
+		os.Exit(1)
+	}
+	fmt.Println(time)
 }
