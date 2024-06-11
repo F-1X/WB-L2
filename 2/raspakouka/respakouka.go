@@ -17,7 +17,7 @@ func Raspokouka(str string) (string, error) {
 	// len of output
 
 	runs := []rune(str)
-	escape := false
+
 
 	for i := 0; i < len(runs); i++ {
 
@@ -27,7 +27,7 @@ func Raspokouka(str string) (string, error) {
 		}
 
 		if isSlash(runs[i]) {
-			escape = true
+		
 			if i != len(runs)-1 {
 				output.WriteRune(runs[i])
 			} else {
@@ -37,12 +37,12 @@ func Raspokouka(str string) (string, error) {
 		}
 
 		if isDigit(runs[i]) {
-			if !escape {
-				return "", fmt.Errorf("incorrect digit %s after %s with no escape: %s, result: %s", string(runs[i]), string(runs[i-1]), str, output.String())
-			}
+			// if !escape {
+			// 	return "", fmt.Errorf("incorrect digit %s after %s with no escape: %s, result: %s", string(runs[i]), string(runs[i-1]), str, output.String())
+			// }
 			count, _ := strconv.Atoi(string(runs[i]))
 			output.WriteString(strings.Repeat(string(runs[i-1]), count))
-			escape = false
+	
 		}
 
 	}
