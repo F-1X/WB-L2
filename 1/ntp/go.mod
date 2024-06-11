@@ -1,4 +1,4 @@
-module ntp
+module github.com/F-1X/WB-L2/1/ntp
 
 go 1.22.4
 
